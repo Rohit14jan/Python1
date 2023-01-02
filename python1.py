@@ -51,3 +51,4 @@ for num in range(10):
         print(num+1)
 
 print('-' * 50)
+#%%
