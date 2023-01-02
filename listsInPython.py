@@ -1,3 +1,5 @@
+from builtins import int
+
 import numpy as np
 
 listofNumbers = list(range(10))
@@ -53,3 +55,65 @@ print("deduplicatedList =", deduplicatedList)
 listOfWords = ["rahul", "rohit", "tushti", "prateek"]
 print("karan" in listOfWords)
 print("rohit" in listOfWords)
+
+# take user inputs and print in order
+name = input("what is your name?")
+print("Hi %s ,welcome to our game!" % name)
+
+hasError = True
+
+while (hasError):
+    try:
+        numGames = input("How many games do you want to play?")
+        numGames = int(numGames)
+        if (numGames > 1 and numGames < 100):
+            hasError = False
+        else:
+            print("you have made an error, please retry")
+    except:
+        print("you have made an error, please retry")
+        hasError = True
+
+print("Thanks %s ,we will play %d games!" % (name, numGames))
+ListOfChoices = ["Rock", "Paper", "Scissors"]
+
+np.random.seed(7)
+
+
+def playGame(ListOfChoices):
+    computerChoiceNumber = np.random.randint(0, 3)
+    computerChoice = ListOfChoices[computerChoiceNumber]
+
+
+    hasError = True
+
+    while (hasError):
+        try:
+            yourChoice = input("what is your choice? Please choose between 'Rock', 'Paper','Scissors':")
+            if (yourChoice in ListOfChoices):
+                hasError = False
+            else:
+                print("you have made an error, please retry")
+        except:
+            print("you have made an error, please retry")
+            hasError = True
+    print("humanChoice=", yourChoice)
+    print("computerChoice=", computerChoice)
+
+    if(yourChoice=="Rock" and computerChoice == "Rock") or (yourChoice=="Paper" and computerChoice == "Paper") or (yourChoice=="Scissors" and computerChoice == "Scissors"):
+        return 0
+    if(yourChoice=="Rock" and computerChoice == "Scissors") or (yourChoice=="Paper" and computerChoice == "Rock") or (yourChoice=="Scissors" and computerChoice == "Paper"):
+        return 1
+    if(yourChoice=="Rock" and computerChoice == "Paper") or (yourChoice=="Paper" and computerChoice == "Scissors") or (yourChoice=="Scissors" and computerChoice == "Rock"):
+        return -1
+
+numGamesWon = 0
+for gamenumber in range(numGames):
+    numGamesWon = numGamesWon+playGame(ListOfChoices)
+
+if (numGamesWon>0):
+    print("you are lucky, you won !")
+elif (numGamesWon<0):
+    print("So sorry, you lost")
+else:
+    print("the game is draw")
