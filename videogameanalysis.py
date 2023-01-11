@@ -56,3 +56,6 @@ games.Year.plot(kind= 'hist')
 #%%
 games.Genre.value_counts().plot(kind="hist")
 #%%
+plt = games.Genre.value_counts().plot(kind="hist")
+plt.savefig('Outputs/bargraph.png')
+#%%
