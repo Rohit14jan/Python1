@@ -53,3 +53,22 @@ plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
 plt.show()
 #%%
+clf = classification_report(yVal_test,yPred,target_names=['without diabetes','with diabetes'])
+print("Classification report=",clf)
+#%%
+# ROC Curve
+yPreds_variations= lr.predict_proba(xVals_test)
+from sklearn.metrics import roc_curve
+
+#%%
+yPreds_variations = yPreds_variations[::,1]
+fpr,tpr,other= roc_curve(yVal_test,yPreds_variations)
+#%%
+from sklearn.metrics import roc_auc_score
+auc = roc_auc_score(yVal_test,yPreds_variations)
+#%%
+plt.plot(fpr,tpr,label="auc"+str(auc))
+plt.legend(loc= 4)
+plt.show()
+
+#%%
