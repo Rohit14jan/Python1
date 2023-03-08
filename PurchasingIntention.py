@@ -39,7 +39,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 from sklearn.metrics import accuracy_score
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 
 # Train a decision tree classifier
